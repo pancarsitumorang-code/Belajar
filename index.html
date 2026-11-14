@@ -1,12 +1,886 @@
-<!doctype html>
-<html lang="id">
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kelas Bu Sari</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berpikir Komputasional - Informatika</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Plus Jakarta Sans & Fira Code -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"Fira Code"', 'monospace'],
+                    },
+                    colors: {
+                        navy: {
+                            800: '#0f172a',
+                            900: '#020617',
+                        },
+                        brand: {
+                            cyan: '#06b6d4',
+                            blue: '#3b82f6',
+                            amber: '#f59e0b',
+                            emerald: '#10b981'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 4s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
-  <h1>Selamat datang!</h1>
-  <p>Website kelas Informatika.</p>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-cyan-500 selection:text-white">
+
+    <!-- Navbar Sticky -->
+    <nav class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/30">
+                        <i class="fa-solid fa-microchip text-white text-lg"></i>
+                    </div>
+                    <div>
+                        <span class="font-bold text-lg tracking-tight block leading-none">Infor<span class="text-cyan-400">Mate</span></span>
+                        <span class="text-[11px] text-slate-400 font-medium">Modul Berpikir Komputasional</span>
+                    </div>
+                </div>
+
+                <!-- Menu Desktop -->
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#beranda" class="text-slate-300 hover:text-cyan-400 transition">Beranda</a>
+                    <a href="#pilar" class="text-slate-300 hover:text-cyan-400 transition">4 Pilar Utama</a>
+                    <a href="#simulasi" class="text-slate-300 hover:text-cyan-400 transition">Lab Robot</a>
+                    <a href="#kuis" class="px-4 py-2 rounded-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold transition shadow-md shadow-cyan-500/20">
+                        Uji Pemahaman
+                    </a>
+                </div>
+
+                <!-- Tombol Menu Mobile -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-300 hover:bg-slate-800 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dropdown Menu Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 px-4 pt-2 pb-4 space-y-2">
+            <a href="#beranda" class="block px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400">Beranda</a>
+            <a href="#pilar" class="block px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400">4 Pilar Utama</a>
+            <a href="#simulasi" class="block px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400">Lab Simulasi Robot</a>
+            <a href="#kuis" class="block px-3 py-2 rounded-lg bg-cyan-500 text-slate-950 font-bold text-center mt-2">Uji Pemahaman</a>
+        </div>
+    </nav>
+
+    <!-- 1. HERO SECTION -->
+    <section id="beranda" class="relative overflow-hidden bg-slate-950 text-white pt-16 pb-24 lg:pt-24 lg:pb-32">
+        <!-- Latar Belakang Dekoratif -->
+        <div class="absolute inset-0 opacity-20 pointer-events-none">
+            <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-cyan-500 blur-3xl"></div>
+            <div class="absolute top-1/2 right-0 w-80 h-80 rounded-full bg-blue-600 blur-3xl"></div>
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Teks Hero -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-cyan-500/30 text-cyan-400 text-xs font-semibold tracking-wide uppercase">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+                        Mata Pelajaran Informatika
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                        Pecahkan Masalah Kompleks dengan <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-amber-300">Berpikir Komputasional</span>
+                    </h1>
+                    
+                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Berpikir komputasional bukan berarti berpikir seperti komputer, melainkan cara berpikir sistematis, logis, dan kreatif layaknya ilmuwan komputer untuk menyelesaikan masalah di kehidupan sehari-hari.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#pilar" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold shadow-lg shadow-cyan-500/25 transition flex items-center justify-center gap-2">
+                            <span>Mulai Belajar Materi</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#simulasi" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700 text-slate-200 font-semibold transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-gamepad text-amber-400"></i>
+                            <span>Coba Mini-Game</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Ilustrasi Interaktif Hero -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md animate-float">
+                        <div class="rounded-2xl bg-slate-900/90 border border-slate-700/80 p-6 shadow-2xl backdrop-blur-sm">
+                            <!-- Header Window -->
+                            <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-800">
+                                <div class="flex gap-2">
+                                    <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                                    <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                                    <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                                </div>
+                                <span class="text-xs font-mono text-slate-400">solusi_cerdas.algo</span>
+                            </div>
+                            
+                            <!-- Konten Kartu Visual -->
+                            <div class="space-y-3 font-mono text-xs sm:text-sm">
+                                <div class="p-3 rounded-xl bg-slate-950/70 border border-slate-800 flex items-center gap-3">
+                                    <span class="p-2 rounded-lg bg-cyan-500/10 text-cyan-400"><i class="fa-solid fa-puzzle-piece"></i></span>
+                                    <div>
+                                        <p class="text-cyan-400 font-semibold">1. Dekomposisi</p>
+                                        <p class="text-slate-400 text-xs">Pecah masalah besar jadi bagian kecil</p>
+                                    </div>
+                                </div>
+                                <div class="p-3 rounded-xl bg-slate-950/70 border border-slate-800 flex items-center gap-3">
+                                    <span class="p-2 rounded-lg bg-blue-500/10 text-blue-400"><i class="fa-solid fa-shapes"></i></span>
+                                    <div>
+                                        <p class="text-blue-400 font-semibold">2. Pengenalan Pola</p>
+                                        <p class="text-slate-400 text-xs">Temukan kesamaan & keteraturan</p>
+                                    </div>
+                                </div>
+                                <div class="p-3 rounded-xl bg-slate-950/70 border border-slate-800 flex items-center gap-3">
+                                    <span class="p-2 rounded-lg bg-amber-500/10 text-amber-400"><i class="fa-solid fa-filter"></i></span>
+                                    <div>
+                                        <p class="text-amber-400 font-semibold">3. Abstraksi</p>
+                                        <p class="text-slate-400 text-xs">Fokus hal penting, abaikan gangguan</p>
+                                    </div>
+                                </div>
+                                <div class="p-3 rounded-xl bg-slate-950/70 border border-slate-800 flex items-center gap-3">
+                                    <span class="p-2 rounded-lg bg-emerald-500/10 text-emerald-400"><i class="fa-solid fa-list-ol"></i></span>
+                                    <div>
+                                        <p class="text-emerald-400 font-semibold">4. Algoritma</p>
+                                        <p class="text-slate-400 text-xs">Susun langkah solusi secara urut</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. BAGIAN MATERI INTERAKTIF: 4 PILAR UTAMA -->
+    <section id="pilar" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-cyan-600 font-bold text-sm uppercase tracking-wider">Fondasi Informatika</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">4 Pilar Berpikir Komputasional</h2>
+                <p class="text-slate-600 mt-3 text-base sm:text-lg">
+                    Klik setiap pilar di bawah ini untuk mempelajari konsep inti dan melihat penerapannya dalam kehidupan sehari-hari.
+                </p>
+            </div>
+
+            <!-- Navigasi Tab Interaktif -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-8" id="pillar-tabs">
+                <button onclick="selectPillar(0)" class="pillar-btn active group p-4 rounded-2xl border-2 border-cyan-500 bg-cyan-50/70 text-left transition-all shadow-sm">
+                    <div class="w-10 h-10 rounded-xl bg-cyan-500 text-white flex items-center justify-center mb-3 font-bold text-lg shadow">
+                        <i class="fa-solid fa-sitemap"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-base sm:text-lg">1. Dekomposisi</h3>
+                    <p class="text-xs text-slate-500 mt-1">Decomposition</p>
+                </button>
+
+                <button onclick="selectPillar(1)" class="pillar-btn group p-4 rounded-2xl border-2 border-slate-200 bg-white hover:border-blue-400 text-left transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 group-hover:bg-blue-600 group-hover:text-white flex items-center justify-center mb-3 font-bold text-lg transition">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-base sm:text-lg">2. Pengenalan Pola</h3>
+                    <p class="text-xs text-slate-500 mt-1">Pattern Recognition</p>
+                </button>
+
+                <button onclick="selectPillar(2)" class="pillar-btn group p-4 rounded-2xl border-2 border-slate-200 bg-white hover:border-amber-400 text-left transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 group-hover:bg-amber-500 group-hover:text-white flex items-center justify-center mb-3 font-bold text-lg transition">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-base sm:text-lg">3. Abstraksi</h3>
+                    <p class="text-xs text-slate-500 mt-1">Abstraction</p>
+                </button>
+
+                <button onclick="selectPillar(3)" class="pillar-btn group p-4 rounded-2xl border-2 border-slate-200 bg-white hover:border-emerald-400 text-left transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 group-hover:bg-emerald-500 group-hover:text-white flex items-center justify-center mb-3 font-bold text-lg transition">
+                        <i class="fa-solid fa-code-branch"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-base sm:text-lg">4. Algoritma</h3>
+                    <p class="text-xs text-slate-500 mt-1">Algorithms</p>
+                </button>
+            </div>
+
+            <!-- Panel Konten Pilar -->
+            <div id="pillar-content" class="rounded-3xl bg-slate-900 text-white p-6 sm:p-10 shadow-xl border border-slate-800 transition-all">
+                <!-- Konten akan diisi oleh JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. SIMULASI / MINI-GAME: LAB ALGORITMA ROBOT -->
+    <section id="simulasi" class="py-20 bg-slate-100 border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="inline-block px-3 py-1 rounded-full bg-amber-100 text-amber-800 font-bold text-xs uppercase tracking-wider mb-2">
+                    Praktik Langsung
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Lab Algoritma: Pandu Robo-Infor</h2>
+                <p class="text-slate-600 mt-3">
+                    Susun serangkaian instruksi algoritma untuk memandu <strong>Robo-Infor</strong> menuju <strong>Baterai Energi</strong> tanpa menabrak rintangan!
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Papan Grid Permainan (Kiri) -->
+                <div class="lg:col-span-6 bg-white p-6 rounded-3xl shadow-md border border-slate-200">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-2">
+                            <span class="font-bold text-slate-800">Level:</span>
+                            <select id="level-select" onchange="loadLevel(this.value)" class="bg-slate-100 border border-slate-300 rounded-lg px-3 py-1.5 text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                                <option value="0">Level 1 - Jalur Lurus & Belok</option>
+                                <option value="1">Level 2 - Menghindari Batu</option>
+                                <option value="2">Level 3 - Labirin Cerdas</option>
+                            </select>
+                        </div>
+                        <button onclick="resetRobot()" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">
+                            <i class="fa-solid fa-rotate-left mr-1"></i> Reset Posisi
+                        </button>
+                    </div>
+
+                    <!-- Grid Container 5x5 -->
+                    <div id="robot-grid" class="grid grid-cols-5 gap-2 aspect-square max-w-md mx-auto bg-slate-900 p-3 rounded-2xl shadow-inner">
+                        <!-- Sel grid dibuat via JS -->
+                    </div>
+
+                    <!-- Kotak Status / Feedback Game (Pengganti alert) -->
+                    <div id="game-feedback" class="mt-4 p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-center text-sm font-medium text-slate-700">
+                        Susun perintah di panel sebelah kanan lalu klik <strong>Jalankan Algoritma</strong>.
+                    </div>
+                </div>
+
+                <!-- Panel Kontrol & Antrean Algoritma (Kanan) -->
+                <div class="lg:col-span-6 bg-white p-6 rounded-3xl shadow-md border border-slate-200 space-y-6">
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg mb-1">1. Pilih Blok Perintah</h3>
+                        <p class="text-xs text-slate-500 mb-3">Klik tombol arah di bawah untuk menambahkannya ke daftar urutan algoritma (Maksimal 12 langkah).</p>
+                        
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                            <button onclick="addCommand('UP')" class="p-3 rounded-xl bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white border border-blue-200 font-bold text-sm transition flex flex-col items-center gap-1 active:scale-95">
+                                <i class="fa-solid fa-arrow-up text-lg"></i>
+                                <span>Atas</span>
+                            </button>
+                            <button onclick="addCommand('DOWN')" class="p-3 rounded-xl bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white border border-blue-200 font-bold text-sm transition flex flex-col items-center gap-1 active:scale-95">
+                                <i class="fa-solid fa-arrow-down text-lg"></i>
+                                <span>Bawah</span>
+                            </button>
+                            <button onclick="addCommand('LEFT')" class="p-3 rounded-xl bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white border border-blue-200 font-bold text-sm transition flex flex-col items-center gap-1 active:scale-95">
+                                <i class="fa-solid fa-arrow-left text-lg"></i>
+                                <span>Kiri</span>
+                            </button>
+                            <button onclick="addCommand('RIGHT')" class="p-3 rounded-xl bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white border border-blue-200 font-bold text-sm transition flex flex-col items-center gap-1 active:scale-95">
+                                <i class="fa-solid fa-arrow-right text-lg"></i>
+                                <span>Kanan</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-slate-900 text-lg">2. Susunan Algoritma Kamu</h3>
+                            <button onclick="clearCommands()" class="text-xs font-semibold text-rose-600 hover:text-rose-700">
+                                <i class="fa-solid fa-trash-can mr-1"></i> Hapus Semua
+                            </button>
+                        </div>
+                        
+                        <div id="command-queue" class="min-h-[120px] p-4 rounded-2xl bg-slate-950 border border-slate-800 flex flex-wrap gap-2 items-start content-start">
+                            <span class="text-slate-500 text-xs font-mono italic">Belum ada perintah yang ditambahkan...</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <button id="run-btn" onclick="runAlgorithm()" class="w-full py-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-extrabold text-base shadow-lg shadow-emerald-500/25 transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-play"></i>
+                            <span>Jalankan Algoritma</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. KUIS INTERAKTIF DENGAN SKOR OTOMATIS -->
+    <section id="kuis" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-cyan-600 font-bold text-sm uppercase tracking-wider">Evaluasi Mandiri</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">Kuis Berpikir Komputasional</h2>
+                <p class="text-slate-600 mt-2">Jawab 5 studi kasus berikut untuk menguji seberapa tajam logika komputasionalmu!</p>
+            </div>
+
+            <!-- Kontainer Kuis -->
+            <div id="quiz-container" class="bg-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-2xl border border-slate-800">
+                <!-- Progress Bar -->
+                <div class="flex items-center justify-between text-xs font-semibold text-slate-400 mb-2">
+                    <span id="quiz-progress-text">Pertanyaan 1 dari 5</span>
+                    <span id="quiz-score-badge" class="px-2.5 py-1 rounded-full bg-cyan-500/20 text-cyan-400">Skor: 0</span>
+                </div>
+                <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden mb-8">
+                    <div id="quiz-progress-bar" class="h-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-300" style="width: 20%"></div>
+                </div>
+
+                <!-- Area Pertanyaan -->
+                <div id="question-area">
+                    <h3 id="question-text" class="text-xl sm:text-2xl font-bold leading-snug mb-6">
+                        Memuat pertanyaan...
+                    </h3>
+                    <div id="options-container" class="space-y-3">
+                        <!-- Pilihan jawaban muncul di sini -->
+                    </div>
+                </div>
+
+                <!-- Umpan Balik Jawaban -->
+                <div id="quiz-feedback" class="hidden mt-6 p-4 rounded-2xl border text-sm leading-relaxed">
+                    <!-- Penjelasan jawaban muncul di sini -->
+                </div>
+
+                <!-- Tombol Lanjut -->
+                <div class="mt-8 flex justify-end">
+                    <button id="next-question-btn" onclick="nextQuestion()" class="hidden px-6 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold transition flex items-center gap-2">
+                        <span>Pertanyaan Berikutnya</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Hasil Akhir Kuis (Tersembunyi di awal) -->
+                <div id="quiz-result" class="hidden text-center py-6 space-y-5">
+                    <div id="result-icon" class="w-20 h-20 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-4xl mx-auto">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-extrabold">Kuis Selesai!</h3>
+                    <p class="text-slate-300 text-lg">Skor Akhir Kamu: <span id="final-score" class="text-cyan-400 font-extrabold text-3xl">100</span> / 100</p>
+                    <p id="result-message" class="text-slate-400 max-w-md mx-auto text-sm"></p>
+                    <button onclick="restartQuiz()" class="px-6 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold transition">
+                        <i class="fa-solid fa-rotate-right mr-2"></i> Ulangi Kuis
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-10 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+            <div class="flex items-center gap-2 text-white font-bold">
+                <i class="fa-solid fa-microchip text-cyan-400"></i>
+                <span>InforMate — Pembelajaran Informatika</span>
+            </div>
+            <p class="text-center sm:text-right text-xs text-slate-500">
+                Materi Berpikir Komputasional (Computational Thinking) untuk Siswa Sekolah.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT INTERAKTIF -->
+    <script>
+        // --- 1. MENU MOBILE TOGGLE ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // --- 2. DATA & LOGIKA 4 PILAR BERPIKIR KOMPUTASIONAL ---
+        const pillarsData = [
+            {
+                title: "Dekomposisi (Decomposition)",
+                badge: "Pilar Pertama",
+                color: "cyan",
+                icon: "fa-sitemap",
+                definition: "Dekomposisi adalah kemampuan memecah masalah atau sistem yang besar dan kompleks menjadi bagian-bagian kecil yang lebih sederhana, sehingga lebih mudah dipahami dan dikelola satu per satu.",
+                why: "Masalah besar sering membuat kita bingung harus mulai dari mana. Dengan membaginya menjadi sub-tugas kecil, pekerjaan terasa lebih ringan dan dapat dikerjakan secara bertahap atau dibagi ke dalam tim.",
+                exampleTitle: "Contoh Sehari-hari: Merencanakan Acara Pentas Seni Sekolah",
+                steps: [
+                    "Divisi Acara: Menyusun jadwal penampilan dan MC.",
+                    "Divisi Perlengkapan: Menyiapkan panggung, sound system, dan dekorasi.",
+                    "Divisi Konsumsi: Mengatur makanan dan minuman panitia serta tamu.",
+                    "Divisi Publikasi: Membuat poster dan menyebarkan informasi."
+                ]
+            },
+            {
+                title: "Pengenalan Pola (Pattern Recognition)",
+                badge: "Pilar Kedua",
+                color: "blue",
+                icon: "fa-layer-group",
+                definition: "Pengenalan pola adalah proses mengamati dan menemukan kesamaan, tren, atau keteraturan di antara bagian-bagian masalah yang telah dipecah maupun dari pengalaman sebelumnya.",
+                why: "Jika kita menemukan pola yang berulang, kita dapat menggunakan solusi yang sama untuk menyelesaikannya tanpa perlu berpikir ulang dari nol.",
+                exampleTitle: "Contoh Sehari-hari: Menebak Cuaca & Kemacetan",
+                steps: [
+                    "Mengamati langit mendung gelap dan angin kencang → Pola tanda akan turun hujan.",
+                    "Melihat jalan raya selalu padat pukul 06.30–07.30 pagi → Pola jam berangkat sekolah/kerja.",
+                    "Dalam matematika: Deret 2, 4, 6, 8 memiliki pola penambahan +2."
+                ]
+            },
+            {
+                title: "Abstraksi (Abstraction)",
+                badge: "Pilar Ketiga",
+                color: "amber",
+                icon: "fa-wand-magic-sparkles",
+                definition: "Abstraksi adalah proses menyaring informasi dengan berfokus hanya pada detail yang penting dan relevan untuk menyelesaikan masalah, serta mengabaikan detail yang tidak perlu.",
+                why: "Terlalu banyak informasi yang tidak relevan dapat mengalihkan fokus kita dari inti persoalan. Abstraksi membantu kita membuat model atau ringkasan yang efektif.",
+                exampleTitle: "Contoh Sehari-hari: Membaca Peta Rute Transportasi (KRL/MRT)",
+                steps: [
+                    "Fokus utama peta jalur kereta: Nama stasiun, urutan pemberhentian, dan titik transit.",
+                    "Detail yang diabaikan: Bentuk gedung di sekitar rel, warna atap rumah, atau pepohonan.",
+                    "Hasilnya: Penumpang mudah memahami rute perjalanan tanpa bingung oleh detail visual."
+                ]
+            },
+            {
+                title: "Algoritma (Algorithms)",
+                badge: "Pilar Keempat",
+                color: "emerald",
+                icon: "fa-code-branch",
+                definition: "Algoritma adalah penyusunan langkah-langkah instruksi yang logis, terurut, dan jelas dari awal hingga akhir untuk menyelesaikan suatu masalah.",
+                why: "Algoritma memastikan siapa pun (baik manusia maupun komputer) yang mengikuti instruksi tersebut secara berurutan akan mendapatkan hasil yang tepat dan konsisten.",
+                exampleTitle: "Contoh Sehari-hari: Resep Memasak Mie Instan",
+                steps: [
+                    "1. Tuangkan 400 ml air ke dalam panci dan nyalakan kompor.",
+                    "2. Tunggu hingga air mendidih, lalu masukkan mie selama 3 menit.",
+                    "3. Sambil menunggu, tuang bumbu ke dalam mangkuk.",
+                    "4. Tiriskan mie, masukkan ke mangkuk, aduk rata, dan sajikan."
+                ]
+            }
+        ];
+
+        function selectPillar(index) {
+            const buttons = document.querySelectorAll('.pillar-btn');
+            const colorMap = ['cyan', 'blue', 'amber', 'emerald'];
+
+            buttons.forEach((btn, idx) => {
+                const c = colorMap[idx];
+                if (idx === index) {
+                    btn.className = `pillar-btn active group p-4 rounded-2xl border-2 border-${c}-500 bg-${c}-50/80 text-left transition-all shadow-md scale-[1.02]`;
+                } else {
+                    btn.className = `pillar-btn group p-4 rounded-2xl border-2 border-slate-200 bg-white hover:border-${c}-400 text-left transition-all`;
+                }
+            });
+
+            const data = pillarsData[index];
+            const contentDiv = document.getElementById('pillar-content');
+
+            contentDiv.innerHTML = `
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7 space-y-4">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-${data.color}-500/20 text-${data.color}-400 text-xs font-bold uppercase tracking-wider">
+                            <i class="fa-solid ${data.icon}"></i>
+                            <span>${data.badge}</span>
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-extrabold text-white">${data.title}</h3>
+                        <p class="text-slate-300 text-base leading-relaxed">
+                            ${data.definition}
+                        </p>
+                        <div class="p-4 rounded-2xl bg-slate-800/70 border border-slate-700/80">
+                            <p class="text-xs font-bold text-${data.color}-400 uppercase tracking-wider mb-1">Mengapa Ini Penting?</p>
+                            <p class="text-slate-300 text-sm">${data.why}</p>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-4">
+                        <div class="flex items-center gap-2 text-${data.color}-400 font-bold text-sm">
+                            <i class="fa-solid fa-lightbulb"></i>
+                            <span>${data.exampleTitle}</span>
+                        </div>
+                        <ul class="space-y-2.5 text-sm text-slate-300">
+                            ${data.steps.map(step => `
+                                <li class="flex items-start gap-2.5 bg-slate-900/90 p-3 rounded-xl border border-slate-800/80">
+                                    <i class="fa-solid fa-circle-check text-${data.color}-400 mt-0.5"></i>
+                                    <span>${step}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Inisialisasi pilar pertama saat halaman dimuat
+        selectPillar(0);
+
+        // --- 3. SIMULASI MINI-GAME: LAB ALGORITMA ROBOT ---
+        const levels = [
+            {
+                start: { r: 4, c: 0 },
+                goal: { r: 1, c: 3 },
+                obstacles: [
+                    { r: 3, c: 1 }, { r: 2, c: 1 }, { r: 1, c: 1 }
+                ]
+            },
+            {
+                start: { r: 4, c: 0 },
+                goal: { r: 0, c: 4 },
+                obstacles: [
+                    { r: 3, c: 0 }, { r: 3, c: 1 }, { r: 1, c: 2 }, { r: 1, c: 3 }, { r: 1, c: 4 }
+                ]
+            },
+            {
+                start: { r: 4, c: 2 },
+                goal: { r: 0, c: 2 },
+                obstacles: [
+                    { r: 3, c: 2 }, { r: 2, c: 1 }, { r: 2, c: 2 }, { r: 2, c: 3 }, { r: 1, c: 1 }
+                ]
+            }
+        ];
+
+        let currentLevelIdx = 0;
+        let robotPos = { ...levels[0].start };
+        let commandQueue = [];
+        let isRunning = false;
+
+        function renderGrid() {
+            const gridEl = document.getElementById('robot-grid');
+            const level = levels[currentLevelIdx];
+            gridEl.innerHTML = '';
+
+            for (let r = 0; r < 5; r++) {
+                for (let c = 0; c < 5; c++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'rounded-xl bg-slate-800/90 border border-slate-700/60 flex items-center justify-center text-2xl sm:text-3xl transition-all duration-300';
+
+                    const isRobot = robotPos.r === r && robotPos.c === c;
+                    const isGoal = level.goal.r === r && level.goal.c === c;
+                    const isObstacle = level.obstacles.some(obs => obs.r === r && obs.c === c);
+
+                    if (isRobot) {
+                        cell.classList.add('bg-cyan-500/20', 'border-cyan-400', 'scale-105');
+                        cell.innerHTML = '<i class="fa-solid fa-robot text-cyan-400"></i>';
+                    } else if (isGoal) {
+                        cell.classList.add('bg-emerald-500/20', 'border-emerald-400');
+                        cell.innerHTML = '<i class="fa-solid fa-battery-full text-emerald-400 animate-pulse"></i>';
+                    } else if (isObstacle) {
+                        cell.classList.add('bg-rose-950/60', 'border-rose-800/60');
+                        cell.innerHTML = '<i class="fa-solid fa-triangle-exclamation text-rose-500 text-xl"></i>';
+                    }
+
+                    gridEl.appendChild(cell);
+                }
+            }
+        }
+
+        function loadLevel(idx) {
+            if (isRunning) return;
+            currentLevelIdx = parseInt(idx);
+            commandQueue = [];
+            renderQueue();
+            resetRobot();
+        }
+
+        function resetRobot() {
+            if (isRunning) return;
+            robotPos = { ...levels[currentLevelIdx].start };
+            renderGrid();
+            setGameFeedback("Susun perintah lalu klik <strong>Jalankan Algoritma</strong>.", "neutral");
+        }
+
+        function addCommand(dir) {
+            if (isRunning) return;
+            if (commandQueue.length >= 12) {
+                setGameFeedback("Maksimal 12 langkah perintah tercapai!", "warning");
+                return;
+            }
+            commandQueue.push(dir);
+            renderQueue();
+        }
+
+        function removeCommand(index) {
+            if (isRunning) return;
+            commandQueue.splice(index, 1);
+            renderQueue();
+        }
+
+        function clearCommands() {
+            if (isRunning) return;
+            commandQueue = [];
+            renderQueue();
+            resetRobot();
+        }
+
+        function renderQueue() {
+            const queueEl = document.getElementById('command-queue');
+            if (commandQueue.length === 0) {
+                queueEl.innerHTML = '<span class="text-slate-500 text-xs font-mono italic">Belum ada perintah yang ditambahkan...</span>';
+                return;
+            }
+
+            const labels = {
+                UP: { text: 'Atas', icon: 'fa-arrow-up' },
+                DOWN: { text: 'Bawah', icon: 'fa-arrow-down' },
+                LEFT: { text: 'Kiri', icon: 'fa-arrow-left' },
+                RIGHT: { text: 'Kanan', icon: 'fa-arrow-right' }
+            };
+
+            queueEl.innerHTML = commandQueue.map((cmd, idx) => `
+                <button onclick="removeCommand(${idx})" title="Klik untuk hapus" class="group px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-rose-600 border border-slate-700 text-cyan-300 hover:text-white font-mono text-xs flex items-center gap-1.5 transition">
+                    <span class="text-slate-500 group-hover:text-rose-200">${idx + 1}.</span>
+                    <i class="fa-solid ${labels[cmd].icon}"></i>
+                    <span>${labels[cmd].text}</span>
+                </button>
+            `).join('');
+        }
+
+        function setGameFeedback(msg, type) {
+            const fb = document.getElementById('game-feedback');
+            fb.innerHTML = msg;
+            fb.className = 'mt-4 p-3.5 rounded-xl border text-center text-sm font-medium transition-all ';
+            if (type === 'success') {
+                fb.className += 'bg-emerald-50 border-emerald-300 text-emerald-800';
+            } else if (type === 'error') {
+                fb.className += 'bg-rose-50 border-rose-300 text-rose-800';
+            } else if (type === 'warning') {
+                fb.className += 'bg-amber-50 border-amber-300 text-amber-800';
+            } else {
+                fb.className += 'bg-slate-50 border-slate-200 text-slate-700';
+            }
+        }
+
+        async function runAlgorithm() {
+            if (isRunning) return;
+            if (commandQueue.length === 0) {
+                setGameFeedback("Tambahkan minimal satu blok perintah terlebih dahulu!", "warning");
+                return;
+            }
+
+            isRunning = true;
+            robotPos = { ...levels[currentLevelIdx].start };
+            renderGrid();
+            setGameFeedback("Menjalankan algoritma langkah demi langkah...", "neutral");
+
+            const level = levels[currentLevelIdx];
+
+            for (let i = 0; i < commandQueue.length; i++) {
+                await new Promise(resolve => setTimeout(resolve, 450));
+                const move = commandQueue[i];
+
+                if (move === 'UP') robotPos.r -= 1;
+                if (move === 'DOWN') robotPos.r += 1;
+                if (move === 'LEFT') robotPos.c -= 1;
+                if (move === 'RIGHT') robotPos.c += 1;
+
+                // Cek keluar batas papan
+                if (robotPos.r < 0 || robotPos.r > 4 || robotPos.c < 0 || robotPos.c > 4) {
+                    setGameFeedback("Ups! Robot keluar dari area papan. Coba perbaiki algoritmamu!", "error");
+                    isRunning = false;
+                    return;
+                }
+
+                renderGrid();
+
+                // Cek menabrak rintangan
+                const hitObstacle = level.obstacles.some(obs => obs.r === robotPos.r && obs.c === robotPos.c);
+                if (hitObstacle) {
+                    setGameFeedback("Awas! Robot menabrak rintangan. Klik Reset dan evaluasi langkahnya.", "error");
+                    isRunning = false;
+                    return;
+                }
+
+                // Cek sampai tujuan
+                if (robotPos.r === level.goal.r && robotPos.c === level.goal.c) {
+                    setGameFeedback("Luar Biasa! Algoritma berhasil memandu Robo-Infor mencapai Baterai Energi!", "success");
+                    isRunning = false;
+                    return;
+                }
+            }
+
+            setGameFeedback("Semua perintah selesai dijalankan, tetapi robot belum sampai ke baterai. Tambahkan langkah lagi!", "warning");
+            isRunning = false;
+        }
+
+        // Inisialisasi papan game
+        renderGrid();
+
+        // --- 4. KUIS INTERAKTIF PILIHAN GANDA ---
+        const quizData = [
+            {
+                question: "Rani ingin membuat aplikasi belanja online. Ia membagi tugas pembuatan menjadi bagian login pengguna, katalog produk, keranjang belanja, dan pembayaran. Pilar berpikir komputasional apa yang diterapkan Rani?",
+                options: [
+                    "Abstraksi (Abstraction)",
+                    "Dekomposisi (Decomposition)",
+                    "Pengenalan Pola (Pattern Recognition)",
+                    "Algoritma (Algorithms)"
+                ],
+                correct: 1,
+                explanation: "Tepat sekali! Memecah sistem besar (aplikasi belanja) menjadi sub-bagian yang lebih kecil dan spesifik disebut Dekomposisi."
+            },
+            {
+                question: "Saat menggambar peta rute bus kota untuk penumpang, desainer hanya menampilkan jalur jalan utama dan nama halte, tanpa menggambar bentuk rumah atau pohon di pinggir jalan. Proses ini disebut...",
+                options: [
+                    "Abstraksi",
+                    "Algoritma",
+                    "Dekomposisi",
+                    "Simulasi"
+                ],
+                correct: 0,
+                explanation: "Benar! Abstraksi menyaring informasi penting (jalur & halte) dan mengabaikan detail yang tidak relevan agar peta mudah dibaca."
+            },
+            {
+                question: "Dokter mengamati bahwa setiap kali musim hujan tiba, jumlah pasien demam berdarah meningkat di wilayah dengan banyak genangan air. Kemampuan dokter menemukan keteraturan gejala ini termasuk pilar...",
+                options: [
+                    "Dekomposisi",
+                    "Pengenalan Pola",
+                    "Abstraksi",
+                    "Debugging"
+                ],
+                correct: 1,
+                explanation: "Betul! Mengidentifikasi kesamaan kejadian atau tren berulang dari data/pengamatan merupakan inti dari Pengenalan Pola."
+            },
+            {
+                question: "Manakah di bawah ini yang merupakan contoh penerapan pilar Algoritma dalam kehidupan sehari-hari?",
+                options: [
+                    "Mengelompokkan baju berdasarkan warna cerah dan gelap",
+                    "Membuat ringkasan materi buku pelajaran untuk ujian",
+                    "Mengikuti panduan langkah demi langkah merakit lemari dari buku manual",
+                    "Membagi anggota kelompok piket kelas menjadi 5 hari"
+                ],
+                correct: 2,
+                explanation: "Tepat! Panduan langkah demi langkah yang urut dan logis untuk mencapai tujuan tertentu adalah definisi dari Algoritma."
+            },
+            {
+                question: "Mengapa berpikir komputasional penting dipelajari oleh semua siswa, bukan hanya calon programmer?",
+                options: [
+                    "Agar siswa bisa menghafal semua bahasa pemrograman",
+                    "Karena melatih cara berpikir logis, terstruktur, dan efisien dalam memecahkan berbagai masalah",
+                    "Supaya manusia bisa bekerja menggantikan mesin",
+                    "Karena komputer hanya bisa digunakan oleh ilmuwan"
+                ],
+                correct: 1,
+                explanation: "Sempurna! Berpikir komputasional adalah keterampilan hidup (life skill) untuk menyelesaikan masalah secara sistematis di bidang apa pun."
+            }
+        ];
+
+        let currentQIndex = 0;
+        let score = 0;
+        let answered = false;
+
+        function loadQuestion() {
+            answered = false;
+            const q = quizData[currentQIndex];
+
+            document.getElementById('quiz-progress-text').textContent = `Pertanyaan ${currentQIndex + 1} dari ${quizData.length}`;
+            document.getElementById('quiz-progress-bar').style.width = `${((currentQIndex + 1) / quizData.length) * 100}%`;
+            document.getElementById('question-text').textContent = q.question;
+
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+
+            const letters = ['A', 'B', 'C', 'D'];
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn w-full text-left p-4 rounded-2xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700 text-slate-200 font-medium transition flex items-center gap-3.5';
+                btn.innerHTML = `
+                    <span class="w-8 h-8 rounded-lg bg-slate-700 text-cyan-400 font-bold flex items-center justify-center shrink-0">${letters[idx]}</span>
+                    <span>${opt}</span>
+                `;
+                btn.onclick = () => checkAnswer(idx, btn);
+                optionsContainer.appendChild(btn);
+            });
+
+            document.getElementById('quiz-feedback').classList.add('hidden');
+            document.getElementById('next-question-btn').classList.add('hidden');
+        }
+
+        function checkAnswer(selectedIndex, selectedBtn) {
+            if (answered) return;
+            answered = true;
+
+            const q = quizData[currentQIndex];
+            const allBtns = document.querySelectorAll('.option-btn');
+            const feedbackEl = document.getElementById('quiz-feedback');
+
+            allBtns.forEach((btn, idx) => {
+                btn.disabled = true;
+                if (idx === q.correct) {
+                    btn.className = 'option-btn w-full text-left p-4 rounded-2xl bg-emerald-500/20 border-2 border-emerald-500 text-white font-semibold flex items-center gap-3.5';
+                } else if (idx === selectedIndex && idx !== q.correct) {
+                    btn.className = 'option-btn w-full text-left p-4 rounded-2xl bg-rose-500/20 border-2 border-rose-500 text-rose-200 flex items-center gap-3.5';
+                } else {
+                    btn.classList.add('opacity-50');
+                }
+            });
+
+            if (selectedIndex === q.correct) {
+                score += 20;
+                document.getElementById('quiz-score-badge').textContent = `Skor: ${score}`;
+                feedbackEl.className = 'mt-6 p-4 rounded-2xl bg-emerald-950/80 border border-emerald-500/50 text-emerald-200 text-sm leading-relaxed';
+                feedbackEl.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400 mr-2"></i><strong>Jawaban Benar!</strong> ${q.explanation}`;
+            } else {
+                feedbackEl.className = 'mt-6 p-4 rounded-2xl bg-rose-950/80 border border-rose-500/50 text-rose-200 text-sm leading-relaxed';
+                feedbackEl.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-400 mr-2"></i><strong>Kurang Tepat.</strong> ${q.explanation}`;
+            }
+
+            feedbackEl.classList.remove('hidden');
+
+            const nextBtn = document.getElementById('next-question-btn');
+            nextBtn.classList.remove('hidden');
+            if (currentQIndex === quizData.length - 1) {
+                nextBtn.innerHTML = '<span>Lihat Hasil Akhir</span> <i class="fa-solid fa-flag-checkered"></i>';
+            } else {
+                nextBtn.innerHTML = '<span>Pertanyaan Berikutnya</span> <i class="fa-solid fa-arrow-right"></i>';
+            }
+        }
+
+        function nextQuestion() {
+            currentQIndex++;
+            if (currentQIndex < quizData.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById('question-area').classList.add('hidden');
+            document.getElementById('quiz-feedback').classList.add('hidden');
+            document.getElementById('next-question-btn').classList.add('hidden');
+
+            const resultArea = document.getElementById('quiz-result');
+            resultArea.classList.remove('hidden');
+            document.getElementById('final-score').textContent = score;
+
+            const msgEl = document.getElementById('result-message');
+            if (score === 100) {
+                msgEl.textContent = "Sempurna! Kamu sudah menguasai 4 pilar Berpikir Komputasional dengan sangat baik.";
+            } else if (score >= 60) {
+                msgEl.textContent = "Bagus sekali! Pemahamanmu sudah kuat. Coba tinjau kembali bagian yang keliru agar nilaimu maksimal.";
+            } else {
+                msgEl.textContent = "Terus semangat belajar! Baca kembali materi 4 pilar di atas dan coba kerjakan kuis ini lagi.";
+            }
+        }
+
+        function restartQuiz() {
+            currentQIndex = 0;
+            score = 0;
+            document.getElementById('quiz-score-badge').textContent = 'Skor: 0';
+            document.getElementById('question-area').classList.remove('hidden');
+            document.getElementById('quiz-result').classList.add('hidden');
+            loadQuestion();
+        }
+
+        // Inisialisasi kuis saat halaman dimuat
+        loadQuestion();
+    </script>
 </body>
 </html>
